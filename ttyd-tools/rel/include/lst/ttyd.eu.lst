@@ -1,0 +1,402 @@
+// system.o
+// unused:memcmp_as4
+// unused:memset_as4
+80005634:memcpy_as4
+// unused:LZ77Decode
+// unused:mtxGetScaleElement
+80005654:mtxGetRotationElement
+// unused:mtx_set_col_vec
+// unused:mtx_set_row_vec
+// unused:mtx_col_vec
+// unused:mtx_row_vec
+8000598C:sysOSReport
+// unused:sysFrame2MsecFloat
+// unused:sysFrame2Msec
+80005A54:sysMsec2FrameFloat
+80005A94:sysMsec2Frame
+80005ABC:sysFrame2SecFloat
+// unused:sysFrame2Sec
+// unused:sysSec2FrameFloat
+// unused:sysSec2Frame
+80005AC8:getV60FPS
+80005BA0:sysDummyDraw
+80005DAC:sysWaitDrawSync
+80005E58:sysGetToken
+80005E68:irand
+// unused:movePos3
+// unused:movePos2
+80005EAC:movePos
+80005F54:sincosf
+80005FCC:padGetRumbleStatus
+80005FDC:padRumbleHardOff
+80005FF0:padRumbleOff
+80006004:padRumbleOn
+// unused:keyGetTriggerR
+// unused:keyGetTriggerL
+80006018:keyGetSubStickY
+// unused:keyGetSubStickX
+80006028:keyGetStickY
+80006038:keyGetStickX
+80006048:keyGetButtonTrg
+8000605C:keyGetDirTrg
+80006070:keyGetButtonRep
+80006084:keyGetDirRep
+80006098:keyGetButton
+800060AC:keyGetDir
+800060C0:makeKey
+800065C4:qqsort
+// 80006748:fsort
+// unused:intplStringToEnum
+80006D54:intplGetValue
+80007104:angleABf
+800072B8:compAngle
+800072F4:distABf
+800073F0:reviseAngle
+// unused:roundi
+80007450:__assert2
+8000752C:__assert
+80007308:getMarioStDvdRoot
+
+// seq_title.o
+// text
+// 80008A54:pressStartGX
+// 80008EFC:disp2
+// 80009264:disp1
+800093F0:titleMain
+// 80009CAC:L_titleInit
+// 80009E90:N_getDebugMode
+// 80009E9C:seq_titleMain
+// 80009EBC:seq_titleExit
+// 80009EF4:seq_titleInit
+// 80009F54:DbgBtlSel_GetMsgDataPtr
+// data
+804217E0:seqTitleWorkPointer2
+
+// dispdrv.o
+// unused:dispGetEntNum
+80010A28:dispGetCurWork
+80010A30:dispCalcZ
+80010AC4:dispDraw
+80010D20:dispSort
+// 80010B90:_sort
+80010D88:dispEntry
+80010E28:dispReInit
+80010E34:dispInit
+
+// seqdrv.o
+// text
+8002E2CC:seqCheckSeq
+8002E2E8:seqGetNextSeq
+8002E2F0:seqGetPrevSeq
+8002E2F8:seqGetSeq
+8002E300:seqSetSeq
+8002E310:seqMain
+8002E3EC:seqInit_MARIOSTORY
+// data
+8042B0A0:seqWork
+
+// memory.o
+// text
+// unused:smartGetWorkPtr
+8002F424:smartTexObj
+8002F460:smartGarbage
+8002F628:smartAlloc
+8002F960:smartFree
+8002FAB4:smartAutoFree
+8002FB58:L_smartReInit
+8002FCC8:smartInit
+// unused:_mapAllocDump
+8002FEAC:_mapFree
+8002FF48:_mapAllocTail
+80030040:_mapAlloc
+800301AC:__memFree
+800301D8:__memAlloc
+8003023C:memClear
+80030300:memInit
+// data
+80421A20:smartWorkPointer
+8042B13C:heapEnd
+8042B150:heapStart
+
+// mario.o
+800562B8:toFrontPose
+800567E8:toRearPose
+80056D18:marioDisp
+80057244:marioDispBlur
+800573C8:marioDispBlurSub
+800579B0:marioPreDisp
+80057E34:marioRearAnime
+800584E0:marioMakeDispDir
+80058A40:marioGetScale
+80058A60:marioChkInScreen
+80058A98:marioGetScreenPos
+80058B1C:marioPaperLightOff
+// unused:marioPaperLightOn
+80058B48:marioPaperOff
+80058BC8:marioPaperOn
+80058CE0:marioSetPaperAnimeLocalTime
+80058DA0:marioChgPaper
+80058E28:marioChgPoseTime
+80058EBC:marioChgPose
+800590D4:toDotMarioPose
+8005925C:marioChgEvtPose
+80059534:marioAnimeId
+80059564:marioChkPushAnime
+800595E0:marioMoveMain
+80059BB0:marioMove
+8005A76C:marioCtrlOff2Main
+8005A918:marioMain
+8005B310:marioReInit
+8005B700:marioInit
+8005BB88:marioPoseInit
+8005BC20:marioSoundInit
+8005BC40:marioOfsRotReset
+8005BCB0:marioReset
+8005BED8:marioResetHitObj
+8005C074:marioChkSts
+8005C114:marioBgmodeOff
+8005C1D8:marioBgmodeOn
+8005C29C:marioBgmodeChk
+8005C2AC:marioSetMutekiTime
+8005C2F8:marioKeyOn
+8005C32C:marioKeyOff
+8005C354:marioCtrlOn2
+8005C394:marioCtrlOff2
+8005C3C8:marioCtrlOn
+8005C3FC:marioCtrlOff
+8005C424:marioKeyOffChk
+8005C434:marioCtrlOffChk
+8005C444:marioFBattlePost
+8005C504:marioFBattlePrepare
+8005C570:N_marioChkUseParty
+8005C59C:marioChkCtrl
+8005C5B4:marioChkKey
+8005C6F0:marioCheckMenuDisable
+8005CB90:marioCaseEventValidChk
+8005CBD0:marioItemGetOk
+8005CBE4:marioItemGetChk
+8005CC20:marioItemGetDisable
+8005CC3C:marioEntry
+8005CEE0:marioSetSpec
+8005CF78:marioSetFamicomMode
+8005D878:marioSetCharMode
+8005E1E8:marioGetColor
+8005E1F8:marioGetPtr
+
+// mariost.o
+// text
+// unused:gcResetDone
+// unused:gcResetCheck
+8006FF98:L_gcResetCheck
+800700B4:gcRumbleCheck
+// unused:gcDvdCheckCancel
+// unused:gcDvdCheckInit
+800703BC:gcDvdCheckThread
+800705E0:viPostCallback
+80070998:marioStGetSystemLevel
+800709A4:marioStSystemLevel
+80070AB8:marioStDisp
+80070AE0:marioStMain
+80070D18:marioStInit
+80261A48:N_systemErrorHandler
+// 80262084:N_setupErrorHandler
+// data
+80422810:globalWorkPointer
+8042B260:_mariostSystemLevel
+
+// fontmgr.o
+// unused:JUTFont_Draw
+// unused:JUTFont_DrawPos
+800759DC:_JUTFont_DrawPos
+80075EB8:JUTFont_DrawStart
+// unused:JUTFont_GetWidth
+// unused:JUTFont_GetWidthEntry
+8007614C:JUTFont_CodeToGlyph
+// unused:JUTFont_Free
+800762C0:JUTFontSetup
+// unused:JUTFont_SetWidth
+800765B8:HSV2RGB
+800767E4:FontGetMessageWidth
+80076808:FontGetMessageWidthLine
+80076B28:kanjiGetWidth
+80076BA0:kanjiSearch
+80076BC0:hankakuSearch
+80076BE4:FontDrawMessageMtx
+80077288:FontDrawMessage
+8007799C:FontDrawStringShake
+80077CCC:FontDrawStringCenterMtx
+// unused:FontDrawStringCenter
+80077F98:FontDrawStringMtx
+800782F0:FontDrawStringVecPitch
+80078624:FontDrawStringPitch
+// unused:FontDrawStringVec
+8007868C:FontDrawString
+800786F4:FontDrawCodeMtx
+80078850:FontDrawCode
+800789F8:FontDrawScaleVec
+80078A14:FontDrawScale
+80078A28:FontGetDrawColor
+80078A30:FontDrawColor_
+80078A9C:FontDrawColor
+80078B00:FontDrawColorIDX
+80078B70:FontDrawNoiseOff
+80078B9C:FontDrawNoise
+80078CA0:FontDrawRainbowColorOff
+80078CC4:FontDrawRainbowColor
+80078D64:FontDrawEdgeOff
+80078D70:FontDrawEdge
+80078D7C:FontDrawStart_alpha
+80078E08:FontDrawStart
+80078E98:fontmgrTexSetup
+80078EC4:fontmgrInit
+
+// windowdrv.o
+// 8007BFEC:getWakuTexObj
+// 8007BFFC:windowGetPointer
+// 8007C00C:windowCheckID
+// 8007C024:windowDispGX2_Waku_col
+8007C708:windowDispGX_Waku_col
+// 8007CD94:windowDispGX_Message
+// 8007D064:_windowDispGX_Message
+// 8007EC50:windowDispGX_System
+// 8007FCAC:windowDispGX_Kanban
+// 80080CA8:windowMain
+// 80080D10:windowDeleteID
+// 80080D7C:windowDelete
+// 80080DC8:windowEntry
+// 80080E50:windowReInit
+80080E94:windowTexSetup
+// 80081040:windowInit
+
+// party.o
+// 800B7E70:partySetFamicomMode
+// 800B8264:partyShadowOff
+// 800B827C:partyUpdateKeyData
+// 800B8384:L_partyClearCont
+// 800B83BC:partyKeyOff
+// 800B83C0:partyKeyOn
+// 800B83C4:partyDisp
+// 800B87CC:partyPreDisp
+// 800B8AE4:partyMakeDispDir
+// 800B8E24:partySetCamId
+// 800B8E2C:partyInitCamId
+// 800B8E5C:party_damage_return
+// 800B9390:partyRideYoshiMain
+// 800B984C:party_ride_yoshi_force_move
+// 800B98D4:party_force_ride_yoshi
+// 800B9A6C:partyRideMain
+// 800BA620:partyRideChk
+// 800BA65C:allPartyRideOff2
+// 800BA720:allPartyRideOff
+// 800BA7E4:L_allPartyRideOn
+// 800BA860:allPartyForceRideOn
+// 800BA934:getRidePos
+// 800BABB4:allPartyRideShip
+// 800BAC40:allPartyRidePlane
+// 800BACCC:partyDokanEnd
+// 800BAD90:partyDokanMain
+// 800BB2A0:partyDokanInit
+// 800BBC90:partyGoodbyeMain
+// 800BC1AC:partyGoodbyeInit
+// 800BC278:partyHelloMain
+// 800BC97C:partyHello
+// 800BCB10:partyDoWork
+// 800BCBB8:driveParty
+// 800BD2A8:partyMain
+// 800BD7E4:N_partyForceChgRunMode
+// 800BD860:partyChgRunMode
+// 800BD8CC:N__partyChgRunMode
+// 800BDC68:partyUsePost
+// 800BDCC4:partyReInit
+// 800BE3E0:partyInit
+// 800BE40C:partyEntry2Pos
+800BE7DC:partyEntry2Hello
+// 800BEB04:partyEntry2
+// 800BEE78:partyEntryMain
+// 800BF1F8:partyGetHeight
+// 800BF228:yoshiSetColor
+800BF2C8:partyKill2
+// 800BF3D0:partyKill
+// 800BF530:partyGoodbye
+// 800BF580:partyEntryPos
+// 800BF79C:partyEntry
+// 800BF954:partyEntryHello
+// 800BF9A4:partySetForceMove
+// 800BF9EC:partyStop
+800BFA10:partyRun
+// 800BFA40:partyCtrlOn
+// 800BFA78:partyCtrlOff
+// 800BFAB0:partyChgPaper
+// 800BFB20:partyChgPose
+// 800BFB9C:partyChgPoseId
+// 800BFD00:partyPaperLightOff
+// 800BFD28:partyPaperOff
+// 800BFDA4:partyPaperOn
+// 800BFEC4:anotherPartyGetPtr
+800BFEE8:partyGetPtr
+
+// printf.c
+8026DEAC:sprintf
+// unused:snprintf
+8026DF8C:vsprintf
+// unused:vsnprintf
+// unused:vfprintf
+8026E004:vprintf
+// unused:fprintf
+8026E09C:printf
+8026E184:__StringWrite
+8026E1F0:__FileWrite
+// 8026E248:__pformatter
+// 8026E9BC:float2str
+// 8026F0D8:round_decimal
+// 8026F204:double2hex
+// 8026F53C:longlong2str
+// 8026F850:long2str
+// 8026FAA8:parse_format
+
+// string.c
+// 80271180:strstr
+// 802711E8:strchr
+80271218:strncmp
+80271258:strcmp
+80271380:strcat
+802713AC:strncpy
+802713F0:strcpy
+802714A8:strlen
+
+// OSCache.c
+// 8029A84C:DCEnable
+// 8029A860:DCInvalidateRange
+8029A88C:DCFlushRange
+// 8029A8BC:DCStoreRange
+// 8029A8EC:DCFlushRangeNoSync
+// 8029A918:DCStoreRangeNoSync
+// 8029A944:DCZeroRange
+8029A970:ICInvalidateRange
+// 8029A9A4:ICFlashInvalidate
+// 8029A9B4:ICEnable
+// 8029A9C8:__LCEnable
+// 8029AA94:LCEnable
+// 8029AACC:LCDisable
+// 8029AAF4:LCStoreBlocks
+// 8029AB18:LCStoreData
+// 8029ABC4:LCQueueWait
+// 8029ABD8:L2GlobalInvalidate
+// 8029AC70:DMAErrorHandler
+// 8029ADD0:__OSCacheInit
+
+// OSContext.c
+// 8029AEC4:__OSLoadFPUContext
+// 8029AFE8:__OSSaveFPUContext
+// 8029B110:OSSaveFPUContext
+// 8029B118:OSSetCurrentContext
+// 8029B174:OSGetCurrentContext
+// 8029B180:OSSaveContext
+// 8029B200:OSLoadContext
+// 8029B2D8:OSGetStackPointer
+// 8029B2E0:OSClearContext
+// 8029B304:OSInitContext
+// 8029B3C0:OSDumpContext
+// 8029B668:OSSwitchFPUContext
+// 8029B6EC:__OSContextInit
+8029B734:L_OSFillFPUContext
