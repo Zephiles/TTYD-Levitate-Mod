@@ -356,7 +356,7 @@
 
 // string.c
 // 8026D38C:strstr
-// 8026D3F4:strchr
+8026D3F4:strchr
 8026D424:strncmp
 8026D464:strcmp
 8026D58C:strcat

@@ -88,6 +88,52 @@ void drawText(const char *text, int32_t x, int32_t y, uint32_t color, float scal
     ttyd::fontmgr::FontDrawMessageMtx(mtxTrans, text);
 }
 
+// Credits to Jdaster64 for writing the original code for this function
+void drawTextMultipleLines(const char *text, int32_t x, int32_t y, uint32_t color, float scale)
+{
+    char lineBuffer[128];
+    const char *currentLine = text;
+    constexpr int32_t maxLength = sizeof(lineBuffer) - 1;
+    
+    // Draw each individual line
+    while (1)
+    {
+        // Find the end of the current line
+        const char *newline = strchr(currentLine, '\n');
+        
+        // If a newline is not found, then currently at the last line
+        if (!newline)
+        {
+            break;
+        }
+        
+        // Copy this line to the temporary buffer and append a null byte
+        int32_t lineLength = newline - currentLine;
+        
+        // Make sure the current line won't be an empty string
+        if (lineLength > 0)
+        {
+            // Prevent a buffer overflow
+            if (lineLength > maxLength)
+            {
+                lineLength = maxLength;
+            }
+            
+            char *tempBuffer = strncpy(lineBuffer, currentLine, lineLength);
+            tempBuffer[lineLength] = '\0';
+            
+            drawText(tempBuffer, x, y, color, scale);
+        }
+        
+        // Advance to the next line
+        currentLine = newline + 1;
+        y -= 20;
+    }
+    
+    // Draw the rest of the text
+    drawText(currentLine, x, y, color, scale);
+}
+
 void drawTextInit(uint8_t alpha, bool drawFontEdge)
 {
     ttyd::fontmgr::FontDrawStart_alpha(alpha);
@@ -99,10 +145,18 @@ void drawTextInit(uint8_t alpha, bool drawFontEdge)
     }
 }
 
-void drawTextAndInit(const char *text, int32_t x, int32_t y, uint8_t alpha, uint32_t color, bool drawFontEdge, float scale)
+void drawTextAndInit(const char *text, int32_t x, int32_t y, 
+    uint8_t alpha, uint32_t color, bool drawFontEdge, float scale)
 {
     drawTextInit(alpha, drawFontEdge);
     drawText(text, x, y, color, scale);
+}
+
+void drawTextMultipleLinesAndInit(const char *text, int32_t x, int32_t y, 
+    uint8_t alpha, uint32_t color, bool drawDontEdge, float scale)
+{
+    drawTextInit(alpha, drawDontEdge);
+    drawTextMultipleLines(text, x, y, color, scale);
 }
 
 void drawTitleScreenInfo()
@@ -134,5 +188,5 @@ void drawTitleScreenInfo()
         "Levitate Mod %s\nCreated by Zephiles",
         versionNumberString);
     
-    drawTextAndInit(tempDisplayBuffer, posX, posY, alpha, textColor, false, scale);
+    drawTextMultipleLinesAndInit(tempDisplayBuffer, posX, posY, alpha, textColor, false, scale);
 }
