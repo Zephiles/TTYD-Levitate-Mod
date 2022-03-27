@@ -73,6 +73,31 @@ void performBootPatches()
     #endif
 }
 
+float __attribute__ ((noinline)) intToFloat(int32_t value)
+{
+    return static_cast<float>(value);
+}
+
+void intToFloatArray(int32_t *values, float *valuesOut, int32_t numValues)
+{
+    for (int32_t i = 0; i < numValues; i++)
+    {
+        valuesOut[i] = intToFloat(values[i]);
+    }
+}
+
+bool checkForSpecificSeq(ttyd::seqdrv::SeqIndex wantedSeq)
+{
+    ttyd::seqdrv::SeqIndex nextSeq = ttyd::seqdrv::seqGetNextSeq();
+    if (nextSeq != wantedSeq)
+    {
+        return false;
+    }
+    
+    ttyd::seqdrv::SeqIndex currentSeq = ttyd::seqdrv::seqGetSeq();
+    return currentSeq == wantedSeq;
+}
+
 bool checkButtonCombo(uint32_t combo)
 {
     uint32_t buttonInput = ttyd::system::keyGetButton(0);
@@ -89,18 +114,6 @@ bool checkButtonComboEveryFrame(uint32_t combo)
 {
     uint32_t buttonInput = ttyd::system::keyGetButton(0);
     return (buttonInput & combo) == combo;
-}
-
-bool checkForSpecificSeq(ttyd::seqdrv::SeqIndex wantedSeq)
-{
-    ttyd::seqdrv::SeqIndex nextSeq = ttyd::seqdrv::seqGetNextSeq();
-    if (nextSeq != wantedSeq)
-    {
-        return false;
-    }
-    
-    ttyd::seqdrv::SeqIndex currentSeq = ttyd::seqdrv::seqGetSeq();
-    return currentSeq == wantedSeq;
 }
 
 void levitate()

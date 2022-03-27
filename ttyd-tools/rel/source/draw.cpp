@@ -1,6 +1,7 @@
 #include "draw.h"
 #include "main.h"
 
+#include <gc/mtx.h>
 #include <ttyd/dispdrv.h>
 #include <ttyd/windowdrv.h>
 #include <ttyd/fontmgr.h>
@@ -8,7 +9,7 @@
 #include <cstring>
 #include <cstdio>
 
-char displayBuffer[512];
+char displayBuffer[256];
 const char *versionNumberString = "v1.0";
 
 void drawFunctionOnDebugLayer(void (*func)())
@@ -53,106 +54,38 @@ void drawFunctionOn2DLayerWithOrder(void (*func)(), float order)
 
 void drawWindow(uint32_t color, int32_t x, int32_t y, int32_t width, int32_t height, int32_t curve)
 {
+    constexpr int32_t numValues = 5;
+    int32_t values[numValues] = { x, y, width, height, curve };
+    float valuesOut[numValues];
+    
+    intToFloatArray(values, valuesOut, numValues);
     uint8_t *newColor = reinterpret_cast<uint8_t *>(&color);
-    float newX        = static_cast<float>(x);
-    float newY        = static_cast<float>(y);
-    float newWidth    = static_cast<float>(width);
-    float newHeight   = static_cast<float>(height);
-    float newCurve    = static_cast<float>(curve);
     
-    ttyd::windowdrv::windowDispGX_Waku_col(0, newColor, newX, newY, newWidth, newHeight, newCurve);
-}
-
-// Replace the first \n found with \0, and return the index of the character after that
-uint32_t getNextLineIndex(char *str)
-{
-    // Set the initial index
-    uint32_t i = 0;
-    
-    // Loop through the string until \n or \0 is found
-    while ((str[i] != '\n') && (str[i] != '\0'))
-    {
-        i++;
-    }
-    
-    // Replace \n with \0 and increment the index to the next line
-    if (str[i] != '\0')
-    {
-        str[i] = '\0';
-        i++;
-    }
-    
-    // Return the index of the next line
-    // Returns 0 when at the end of the string
-    return i;
-}
-
-void drawStringMultiline(float x, float y, const char *text)
-{
-    // Copy the text to a temporary array, as it will be modified
-    uint32_t textSize = strlen(text);
-    char tempText[textSize + 1];
-    strcpy(tempText, text);
-    
-    // Get the index for the next line
-    uint32_t index = getNextLineIndex(tempText);
-    
-    // Draw the first line
-    char *currentLine = tempText;
-    
-    do
-    {
-        // Only draw the line if not pointing to an empty string
-        // This will only occur if multiple newlines were directly next to each other
-        if (currentLine[0] != '\0')
-        {
-            ttyd::fontmgr::FontDrawString(x, y, currentLine);
-        }
-        
-        // Set currentLine to the next line
-        currentLine += index;
-        
-        // Get the following line index
-        index = getNextLineIndex(currentLine);
-        
-        // Implement the new line space
-        y -= 20.f;
-    }
-    while (index != 0);
+    ttyd::windowdrv::windowDispGX_Waku_col(0, newColor, valuesOut[0], 
+        valuesOut[1], valuesOut[2], valuesOut[3], valuesOut[4]);
 }
 
 void drawText(const char *text, int32_t x, int32_t y, uint32_t color, float scale)
 {
-    ttyd::fontmgr::FontDrawScale(scale);
+    // Make sure the text isn't an empty string
+    if (text[0] == '\0')
+    {
+        return;
+    }
+    
+    gc::mtx::mtx34 mtxScale;
+    gc::mtx::PSMTXScale(mtxScale, scale, scale, scale);
+    
+    gc::mtx::mtx34 mtxTrans;
+    gc::mtx::PSMTXTransApply(
+        mtxScale, 
+        mtxTrans, 
+        intToFloat(x), 
+        intToFloat(y), 
+        0.f);
+    
     ttyd::fontmgr::FontDrawColor(reinterpret_cast<uint8_t *>(&color));
-    
-    uint32_t i = 0;
-    char endOfLineChar;
-    bool loopDone = false;
-    
-    while (!loopDone)
-    {
-        endOfLineChar = text[i];
-        if ((endOfLineChar == '\n') || (endOfLineChar == '\0'))
-        {
-            loopDone = true;
-        }
-        i++;
-    }
-    
-    float newX = static_cast<float>(x);
-    float newY = static_cast<float>(y);
-    
-    if (endOfLineChar == '\n')
-    {
-        // The text has multiple lines
-        drawStringMultiline(newX, newY, text);
-    }
-    else
-    {
-        // The text has one line
-        ttyd::fontmgr::FontDrawString(newX, newY, text);
-    }
+    ttyd::fontmgr::FontDrawMessageMtx(mtxTrans, text);
 }
 
 void drawTextInit(uint8_t alpha, bool drawFontEdge)

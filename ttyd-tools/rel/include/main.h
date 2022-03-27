@@ -22,7 +22,9 @@ enum PAD_INPUTS
 };
 
 void performBootPatches();
+float intToFloat(int32_t value);
+void intToFloatArray(int32_t *values, float *valuesOut, int32_t numValues);
+bool checkForSpecificSeq(ttyd::seqdrv::SeqIndex wantedSeq);
 bool checkButtonCombo(uint32_t combo);
 bool checkButtonComboEveryFrame(uint32_t combo);
-bool checkForSpecificSeq(ttyd::seqdrv::SeqIndex wantedSeq);
 void levitate();

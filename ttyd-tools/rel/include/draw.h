@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-extern char displayBuffer[512];
+extern char displayBuffer[256];
 extern const char *versionNumberString;
 
 void drawFunctionOnDebugLayer(void (*func)());
@@ -12,7 +12,6 @@ void drawFunctionOn2DLayerWithOrder(void (*func)(), float order);
 
 void drawWindow(uint32_t color, int32_t x, int32_t y, int32_t width, int32_t height, int32_t curve);
 
-void drawStringMultiline(float x, float y, const char *text);
 void drawText(const char *text, int32_t x, int32_t y, uint32_t color, float scale);
 void drawTextInit(uint8_t alpha, bool drawFontEdge);
 
