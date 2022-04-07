@@ -19,7 +19,4 @@ void drawTextInit(uint8_t alpha, bool drawFontEdge);
 void drawTextAndInit(const char *text, int32_t x, int32_t y, 
     uint8_t alpha, uint32_t color, bool drawDontEdge, float scale);
 
-void drawTextMultipleLinesAndInit(const char *text, int32_t x, int32_t y, 
-    uint8_t alpha, uint32_t color, bool drawDontEdge, float scale);
-
 void drawTitleScreenInfo();

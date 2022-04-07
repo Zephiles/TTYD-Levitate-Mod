@@ -149,13 +149,6 @@ void drawTextAndInit(const char *text, int32_t x, int32_t y,
     uint8_t alpha, uint32_t color, bool drawFontEdge, float scale)
 {
     drawTextInit(alpha, drawFontEdge);
-    drawText(text, x, y, color, scale);
-}
-
-void drawTextMultipleLinesAndInit(const char *text, int32_t x, int32_t y, 
-    uint8_t alpha, uint32_t color, bool drawDontEdge, float scale)
-{
-    drawTextInit(alpha, drawDontEdge);
     drawTextMultipleLines(text, x, y, color, scale);
 }
 
@@ -188,5 +181,5 @@ void drawTitleScreenInfo()
         "Levitate Mod %s\nCreated by Zephiles",
         versionNumberString);
     
-    drawTextMultipleLinesAndInit(tempDisplayBuffer, posX, posY, alpha, textColor, false, scale);
+    drawTextAndInit(tempDisplayBuffer, posX, posY, alpha, textColor, false, scale);
 }
